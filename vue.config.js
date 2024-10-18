@@ -3,7 +3,7 @@ module.exports = {
   productionSourceMap: false,
   chainWebpack: config => {
     const svgRule = config.module.rule('svg');
- 
+  publicPath: process.env.NODE_ENV === "production" ? "/vue-netflix-clone-aluraflix/" : "/",
     svgRule.uses.clear();
  
     svgRule
