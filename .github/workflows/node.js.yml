@@ -23,7 +23,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    - run: npm ci  # Use npm ci for a clean install based on package-lock.json
+    - run: npm install --package-lock-only  # Regenerate package-lock.json with the current npm version
+    - run: npm ci  # Clean install based on the updated package-lock.json
     
     - run: npm run build  # Build the project before serving
     - run: npm run serve &  # Start the server in the background
